@@ -1,4 +1,4 @@
-name: Meshery Adapter for Consul Tests
+name: Meshplay Adapter for Consul Tests
 
 on:
   push:
@@ -47,13 +47,13 @@ jobs:
 
   TestAdapterForServicemeshInstall:
     needs: SetPatternfileForServicemeshInstall
-    uses: meshery/meshery/.github/workflows/test_adaptersv2.yaml@master
+    uses: Meshplay/Meshplay/.github/workflows/test_adaptersv2.yaml@master
     with: 
       expected_resources: consul-connect-injector,consul-server,consul-webhook-cert-manager
       expected_resources_types: pod,pod,pod
       expected_resources_namespaces: consul, consul, consul
-      deployment_url: https://raw.githubusercontent.com/meshery/meshery/master/install/deployment_yamls/k8s/meshplay-consul-deployment.yaml
-      service_url: https://raw.githubusercontent.com/meshery/meshery/master/install/deployment_yamls/k8s/meshplay-consul-service.yaml
+      deployment_url: https://raw.githubusercontent.com/Meshplay/Meshplay/master/install/deployment_yamls/k8s/meshplay-consul-deployment.yaml
+      service_url: https://raw.githubusercontent.com/Meshplay/Meshplay/master/install/deployment_yamls/k8s/meshplay-consul-service.yaml
       adapter_name: consul
       patternfile_name: deploy.yaml 
       provider: Local 
@@ -79,7 +79,7 @@ jobs:
             fi
       - uses: actions/checkout@master
         with:
-          repository: meshery/meshery 
+          repository: Meshplay/Meshplay 
           token: ${{ secrets.GH_ACCESS_TOKEN }}   
       - name: DownloadJSON
         uses: actions/download-artifact@v2
@@ -101,9 +101,9 @@ jobs:
           echo $filename
           echo "---
           timestamp: $(jq '.metadata.runon| strptime("%a %b %e %X %Z %Y") | strftime("%Y-%m-%d %X %Z %a")' data.json)
-          meshery-component: meshplay-consul
-          meshery-component-version: $version
-          meshery-server-version: $(jq '.metadata."meshery-server-version"' data.json)
+          Meshplay-component: meshplay-consul
+          Meshplay-component-version: $version
+          Meshplay-server-version: $(jq '.metadata."Meshplay-server-version"' data.json)
           k8s-distro: minikube
           k8s-version: $(jq '.metadata.k8s_version' data.json)
           service-mesh: Consul
