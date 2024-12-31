@@ -1,13 +1,14 @@
 module github.com/synopkg/meshplay-consul
 
 go 1.21
+toolchain go1.23.4
 
 replace github.com/kudobuilder/kuttl => github.com/layer5io/kuttl v0.4.1-0.20200723152044-916f10574334
 
 require (
 	github.com/google/uuid v1.6.0
 	github.com/layer5io/meshery-adapter-library v1.1.0
-	github.com/layer5io/meshkit v0.7.85
+	github.com/layer5io/meshkit v0.8.0
 	github.com/layer5io/service-mesh-performance v0.3.4
 	gopkg.in/yaml.v2 v2.4.0
 )
